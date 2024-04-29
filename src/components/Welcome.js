@@ -9,16 +9,18 @@ export default function Welcome(props) {
             <div id="landingDiv">
                 <Container className="landingContainer">
                     <div className="d-flex">
-                        <Row id="rowLandingIcon">
-                            <img id="landingIcon" className="" alt="Logo de l'entreprise 3D RAT PLUS" src="/pictures/landing/imageNuisible.png"/>
-                        </Row>
-                        <Row className="text-center d-flex align-content-center justify-content-center">
-                            <h1 className='fs-3 text-center' id='titrePage'>3D RAT PLUS, INTERVENTION NUISIBLE DANS TOUT
+                        <Row >
+                            <Col id="rowLandingIcon" xl={6} md={6} sm={12} >
+                                <img id="landingIcon" className="" alt="Logo de l'entreprise 3D RAT PLUS" src="/pictures/landing/imageNuisible.png"/>
+                            </Col>
+                            <Col className="text-center align-content-center justify-content-center" xl={6} md={6} sm={12} >
+                                <h1 className='fs-3 text-center' id='titrePage'>3D RAT PLUS, INTERVENTION NUISIBLE DANS TOUT
                                 PARIS ET EN ÎLE-DE-FRANCE</h1>
-                            <p >Nous intervenons chez vous pour traîter vos problèmes de
+                                <p >Nous intervenons chez vous pour traîter vos problèmes de
                                 nuisibles. <strong>Désinsectisation, dératisation, nid-de-guêpe/frelon, punaise de
                                     lit</strong></p>
                             <Button className="btn btn-danger btn-landing" as={Link} to="/request" ><i className="fa fa-file"></i>Demander un devis</Button>
+                            </Col>
                         </Row>
                     </div>
                 </Container>

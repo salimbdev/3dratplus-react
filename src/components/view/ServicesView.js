@@ -6,8 +6,8 @@ export default function ServicesView(props) {
 
     return (
         <div>
-            <Container>
-                <h2 className="text-center">Nos Services</h2>
+            <h2 className="text-center">Nos Services</h2>
+            <Container className='d-flex align-items-center justify-content-center'>
 
                 <Row className="d-flex align-items-center w-100 mt-4 mb-4">
                     {props.services === null ? <p></p> : props.services.map(services => (
