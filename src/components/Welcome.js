@@ -6,11 +6,11 @@ import {Link} from "react-router-dom";
 export default function Welcome(props) {
     return (
         <div>
-            <div id="landingDiv">
+            <div id="landingDiv justify-content-center">
                 <Container className="landingContainer">
-                    <div className="d-flex">
-                        <Row >
-                            <Col id="rowLandingIcon" xl={6} md={6} sm={12} >
+                    <div >
+                        <Row className="">
+                            <Col className="d-flex justify-content-center" id="rowLandingIcon" xl={6} md={6} sm={12} >
                                 <img id="landingIcon" className="" alt="Logo de l'entreprise 3D RAT PLUS" src="/pictures/landing/imageNuisible.png"/>
                             </Col>
                             <Col className="text-center align-content-center justify-content-center" xl={6} md={6} sm={12} >

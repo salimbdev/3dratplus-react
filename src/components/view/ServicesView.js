@@ -9,9 +9,9 @@ export default function ServicesView(props) {
             <h2 className="text-center">Nos Services</h2>
             <Container className='d-flex align-items-center justify-content-center'>
 
-                <Row className="d-flex align-items-center w-100 mt-4 mb-4">
+                <Row className="d-flex justify-content-center align-items-center w-100 mt-4 mb-4">
                     {props.services === null ? <p></p> : props.services.map(services => (
-                        <Col key={services.id} xl={3} md={6} sm={12} className="g">
+                        <Col key={services.id} xl={3} md={6} sm={12} className="d-flex justify-content-center mt-3 mb-3">
                             <div className="cardPresta">
 
                                 <div className="imgBoxPresta">
