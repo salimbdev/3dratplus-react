@@ -20,7 +20,8 @@ export default function ConnectionController(props){
                     id: json.id,
                     firstName: json.firstName,
                     lastName: json.lastName,
-                    bearer: json.tokenType
+                    bearer: json.tokenType,
+                    roles: json.roles
                 }
             ));
         console.log(user);

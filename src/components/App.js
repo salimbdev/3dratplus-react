@@ -19,6 +19,9 @@ export default function App() {
   const [services, setServices] = useState(null);
   const [oneService, setOneService] = useState(null);
   const [idService, setIdService] = useState(null);
+  const [categories, setCategories] = useState(null);
+  const [alertMessage, setAlertMessage] = useState(null);
+  const [alertVariant, setAlertVariant] = useState(null);
 
 
 
@@ -84,14 +87,28 @@ export default function App() {
 
           <article>
               <Routes>
-                <Route exact path="/" element={<Welcome services={services} setServices={(data) => setServices(data)}/>}/>
+                <Route exact path="/" element={<Welcome
+                    services={services}
+                    setServices={(data) => setServices(data)}
+                    alertVariant={alertVariant}
+                    alertMessage={alertMessage}
+                    setAlertMessage={(data) => setAlertMessage(data)}
+                    setAlertVariant={(data) => setAlertVariant(data)}
+                />}/>
                 <Route exact path="/home" element={<Welcome
                     services={services}
                     setServices={(data) => setServices(data)}
                     oneService={oneService}
                     setOneService={(data) => setOneService(data)}
+                    alertVariant={alertVariant}
+                    alertMessage={alertMessage}
+                    setAlertMessage={(data) => setAlertMessage(data)}
+                    setAlertVariant={(data) => setAlertVariant(data)}
                 />}/>
-                <Route exact path="/products" element={<ProductsController />}/>
+                <Route exact path="/products" element={<ProductsController
+                    categories={categories}
+                    setCategories={(data) => setCategories(data)}
+                />}/>
                 <Route exact path="/services" element={<ServicesController
                     services={services}
                     setServices={(data) => setServices(data)}
@@ -102,7 +119,14 @@ export default function App() {
                 <Route exact path="/connection" element={<ConnectionController />} />
                 <Route exact path="/register" element={<RegisterController />} />
                 <Route exact path="/service/:id" element={<SingleServiceController idService={idService} oneService={oneService} setOneService={(data) => setOneService(data)} />} />
-                <Route exact path="/request" element={<QuoteRequestController />}/>
+                <Route exact path="/request" element={<QuoteRequestController
+                    categories={categories}
+                    setCategories={(data) => setCategories(data)}
+                    setAlertMessage={(data) => setAlertMessage(data)}
+                    setAlertVariant={(data) => setAlertVariant(data)}
+                    alertMessage={alertMessage}
+                    alertVariant={alertVariant}
+                />}/>
               </Routes>
           </article>
         </BrowserRouter>

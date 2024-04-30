@@ -1,16 +1,23 @@
 import React from "react";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Alert, Button, Col, Container, Row} from "react-bootstrap";
 import ServicesController from "./controller/ServicesController";
 import {Link} from "react-router-dom";
 
 export default function Welcome(props) {
     return (
         <div>
-            <div id="landingDiv justify-content-center">
+            {props.alertMessage !== null ?
+                <Alert key={props.alertVariant} variant={props.alertVariant} className="text-center" onClick={() => {
+                    // props.setAlertMessage(null);
+                    // props.setAlertVariant(null);
+
+                }}>{props.alertMessage}</Alert> : <p></p>
+            }
+            <div id="landingDiv">
                 <Container className="landingContainer">
                     <div >
                         <Row className="">
-                            <Col className="d-flex justify-content-center" id="rowLandingIcon" xl={6} md={6} sm={12} >
+                            <Col className="text-center" id="rowLandingIcon" xl={6} md={6} sm={12} >
                                 <img id="landingIcon" className="" alt="Logo de l'entreprise 3D RAT PLUS" src="/pictures/landing/imageNuisible.png"/>
                             </Col>
                             <Col className="text-center align-content-center justify-content-center" xl={6} md={6} sm={12} >

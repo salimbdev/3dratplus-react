@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import {Card, Col, Container, Form, InputGroup, Nav, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
-export default function QuoteRequestFormView() {
-    const [fields, setFields] = useState({ description: "", pieceNumber: "", totalArea:"",startingDate:"" ,picture1:"", picture2:"", picture3:"" });
+export default function QuoteRequestFormView(props) {
+    const [fields, setFields] = useState({ description: "", pieceNumber: "", totalArea:"",startingDate:"" ,picture1:"", picture2:"", picture3:"", categoryId:""});
 
     return(
         <Container>
@@ -20,12 +20,35 @@ export default function QuoteRequestFormView() {
                                     <i className="fa fa-file-archive"></i>
                                 </InputGroup.Text>
                                 <Form.Control
-                                    type="textArea"
+                                    as="textarea"
+                                    rows={3}
                                     aria-describedby="inpDescription"
                                     placeholder="Veuillez entrer la description de votre demande"
                                     value={fields.description}
                                     onChange={form => setFields({...fields, description: form.target.value})}
                                 />
+                            </InputGroup>
+                        </Col>
+                    </Row>
+                    <Row className="pt-4 ps-3 pe-3">
+                        <Col sm={{ offset: 1, span: 10 }} md={3} lg={2}>
+                            <output>Type de nuisible</output>
+                        </Col>
+                        <Col sm={{ offset: 1, span: 10 }} md={{ offset: 0, span: 7 }} lg={7}>
+                            <InputGroup className="mb-3">
+                                <InputGroup.Text id="inpCategories">
+                                    <i className="fa fa-file-archive"></i>
+                                </InputGroup.Text>
+                                <Form.Select
+                                    aria-describedby="inpCategories"
+                                    value={fields.categoryId}
+                                    onChange={form => setFields({...fields, categoryId: form.target.value})}
+                                >
+                                    <option value="-">-</option>
+                                    {props.categories === null ? <option></option> : props.categories.map((category) => (
+                                        <option key={category.id} value={category.id}>{category.name}</option>
+                                    ))}
+                                </Form.Select>
                             </InputGroup>
                         </Col>
                     </Row>
@@ -43,7 +66,7 @@ export default function QuoteRequestFormView() {
                                     aria-describedby="inpPieceNumber"
                                     placeholder="Veuillez entrer le nombre de pièce(s) concernée(s)"
                                     value={fields.pieceNumber}
-                                    onChange={form => setFields({...fields, password: form.target.value})}
+                                    onChange={form => setFields({...fields, pieceNumber: form.target.value})}
                                 />
                             </InputGroup>
                         </Col>
@@ -143,12 +166,12 @@ export default function QuoteRequestFormView() {
                         <Col sm={{span: 10 }} lg={6} className="p-1">
                             <Nav.Link
                                 className="btn bg-black w-100 text-white"
-                                as={Link} to="/"
+                                // as={Link} to="/"
                                 onClick={
-                                    () => props.postQuoteRequest(fields.username, fields.password, fields.firstName, fields.lastName, fields.address, fields.postalCode, fields.city, fields.phoneNumber)
+                                    () => props.postQuoteRequest(fields.description, fields.pieceNumber, fields.totalArea, fields.startingDate, fields.picture1, fields.picture2, fields.picture3, fields.categoryId)
                                 }
                             >
-                                Inscription
+                                Envoyer
                             </Nav.Link>
                         </Col>
                     </Row>

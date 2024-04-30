@@ -11,7 +11,7 @@ export default function ServicesView(props) {
 
                 <Row className="d-flex justify-content-center align-items-center w-100 mt-4 mb-4">
                     {props.services === null ? <p></p> : props.services.map(services => (
-                        <Col key={services.id} xl={3} md={6} sm={12} className="d-flex justify-content-center mt-3 mb-3">
+                        <Col key={services.id} xl={3} md={6} sm={12} className="d-grid justify-content-center">
                             <div className="cardPresta">
 
                                 <div className="imgBoxPresta">
