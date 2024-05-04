@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import AddProductFormView from "./AddProductFormView";
+import {Link} from "react-router-dom";
 
 export default function ProductsView(props){
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -41,7 +42,7 @@ export default function ProductsView(props){
                                     <p className='text-center'>{products.description.length > 120 ?
                                         `${products.description.substring(0, 120)}...` : products.description
                                     }</p>
-                                    <Button value={products.id}  className="buy">Plus de détail</Button>
+                                    <Button value={products.id} onClick={() => props.fetchOneProduct(products.id)} as={Link} to={"product/"+ products.id}  className="buy">Plus de détail</Button>
                                 </div>
 
                             </div>

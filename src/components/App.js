@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import {Container, Nav, Navbar, Row} from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
@@ -7,10 +7,10 @@ import Welcome from "./Welcome";
 import ProductsController from "./controller/ProductsController";
 import ServicesController from "./controller/ServicesController";
 import ConnectionController from "./controller/ConnectionController";
-import SingleServiceView from "./view/SingleServiceView";
 import SingleServiceController from "./controller/SingleServiceController";
 import RegisterController from "./controller/RegisterController";
 import QuoteRequestController from "./controller/QuoteRequestController";
+import SingleProductController from "./controller/SingleProductController";
 
 
 export default function App() {
@@ -18,6 +18,7 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [services, setServices] = useState(null);
   const [oneService, setOneService] = useState(null);
+  const [oneProduct, setOneProduct] = useState(null);
   const [idService, setIdService] = useState(null);
   const [categories, setCategories] = useState(null);
   const [alertMessage, setAlertMessage] = useState(null);
@@ -94,6 +95,7 @@ export default function App() {
                     alertMessage={alertMessage}
                     setAlertMessage={(data) => setAlertMessage(data)}
                     setAlertVariant={(data) => setAlertVariant(data)}
+                    setOneService={(data) => setOneService(data)}
                 />}/>
                 <Route exact path="/home" element={<Welcome
                     services={services}
@@ -108,17 +110,18 @@ export default function App() {
                 <Route exact path="/products" element={<ProductsController
                     categories={categories}
                     setCategories={(data) => setCategories(data)}
+                    oneProduct={oneProduct}
+                    setOneProduct={(data) => setOneProduct(data)}
                 />}/>
                 <Route exact path="/services" element={<ServicesController
                     services={services}
                     setServices={(data) => setServices(data)}
-                    setIdService={(data) => setIdService(data)}
                     oneService={oneService}
                     setOneService={(data) => setOneService(data)}
                 />}/>
                 <Route exact path="/connection" element={<ConnectionController />} />
                 <Route exact path="/register" element={<RegisterController />} />
-                <Route exact path="/service/:id" element={<SingleServiceController idService={idService} oneService={oneService} setOneService={(data) => setOneService(data)} />} />
+                <Route exact path="/services/service/:id" element={<SingleServiceController oneService={oneService} setOneService={(data) => setOneService(data)} />} />
                 <Route exact path="/request" element={<QuoteRequestController
                     categories={categories}
                     setCategories={(data) => setCategories(data)}
@@ -127,6 +130,7 @@ export default function App() {
                     alertMessage={alertMessage}
                     alertVariant={alertVariant}
                 />}/>
+                <Route exact path="/products/product/:id" element={<SingleProductController oneProduct={oneProduct} setOneProduct={(data) => setOneProduct(data)} />} />
               </Routes>
           </article>
         </BrowserRouter>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Card, Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 export default function ServicesView(props) {
@@ -25,7 +25,7 @@ export default function ServicesView(props) {
                                         `${services.description.substring(0, 120)}...` : services.description
                                     }</p>
 
-                                    <Button value={services.id} className="buy" as={Link} onClick={() => props.fetchOneService(e.target.value)}  to={"service/" + services.id}>
+                                    <Button value={services.id} className="buy" as={Link} onClick={() => props.fetchOneService(services.id)}  to={"/services/service/" + services.id}>
                                         Plus de détail
 
                                     </Button>

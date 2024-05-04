@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React,{useEffect} from "react";
 import ServicesView from "../view/ServicesView";
 
 
@@ -28,6 +28,6 @@ export default function ServicesController(props) {
     }
 
     return (
-        <ServicesView services={props.services} setIdService={(data) => props.setIdService(data)} fetchOneService={(id) => fetchOneService(id)}/>
+        <ServicesView services={props.services} fetchOneService={(id) => fetchOneService(id)}/>
     )
 }

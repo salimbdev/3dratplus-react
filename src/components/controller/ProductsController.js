@@ -36,6 +36,25 @@ export default function ProductsController(props){
         }
     }
 
+    function fetchOneProduct(id){
+        fetch(`${backUrl}/product/${id}`)
+            .then(response => response.json())
+            .then(json => {
+                props.setOneProduct(json);
+                console.log(json);
+            });
+
+        return(
+
+            <div>
+                {props.oneProduct === null ? <p></p> :
+                <h2>{props.oneProduct.name}</h2>
+                }
+            </div>
+
+        )
+    }
+
     function addProduct(name, description, price, picture, available, brand ,categoriesId){
 
         const newProduct = {
@@ -74,7 +93,7 @@ export default function ProductsController(props){
                           fetchProductsByCategory={(categoryId) => fetchProductsByCategory(categoryId)}
                           user={user}
                           addProduct={(name, description, price, picture, available, brand ,categoriesId) => addProduct(name, description, price, picture, available, brand ,categoriesId)}
-
+                          fetchOneProduct={(id) => fetchOneProduct(id)}
             />
         </div>
     )
